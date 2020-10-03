@@ -4,100 +4,97 @@
 
 使用 IDA 打开，F5 反编译：
 
-(```)
 
 void __noreturn sub_401C10()
 
 
 {
 
-int v0; // eax@8
+    int v0; // eax@8
 
-char Buffer; // [sp+1Ch] [bp-108h]@2
+    char Buffer; // [sp+1Ch] [bp-108h]@2
 
-char v2; // [sp+1Dh] [bp-107h]@3
+    char v2; // [sp+1Dh] [bp-107h]@3
 
-char v3; // [sp+1Fh] [bp-105h]@4
+    char v3; // [sp+1Fh] [bp-105h]@4
 
-char v4; // [sp+20h] [bp-104h]@4
+    char v4; // [sp+20h] [bp-104h]@4
 
-char v5; // [sp+24h] [bp-100h]@7
+    char v5; // [sp+24h] [bp-100h]@7
 
 
 
-sub_4018F0();
+    sub_4018F0();
 
-puts("**input any number to guess 3 key segments**");
+    puts("**input any number to guess 3 key segments**");
 
-while ( 1 )
+    while ( 1 )
 
-{
+    {
 
-while ( 1 )
+        while ( 1 )
 
-{
+        {
 
-while ( 1 )
+            while ( 1 )
 
-{
+            {
 
-printf("guess_key:");
+                printf("guess_key:");
 
-gets(&Buffer);
+                gets(&Buffer);
 
-if ( strlen(&Buffer) <= 0x12 )
+                if ( strlen(&Buffer) <= 0x12 )
 
-break;
+                break;
 
-puts("too long");
+                puts("too long");
+
+            }
+
+            if ( Buffer == v2 && v3 == v4 && v5 == 57 )
+
+            break;
+
+            LABEL_5:
+
+            puts("wrong, try again...");
+
+        }
+
+        v0 = v3 - 48;
+
+        if ( v0 == 5 )
+
+        {
+
+        puts("get a segment:VjdXJpdHl9");
+
+        }
+
+        else if ( v0 == 7 )
+
+        {
+
+        puts("get a segment:ZmxhZ3tpbmZv");
+
+        }
+
+        else
+
+        {
+
+        if ( v0 != 4 )
+
+        goto LABEL_5;
+
+        puts("get a segment:cm1hdGlvbl9fc2");
+
+        }
+
+    }
 
 }
-
-if ( Buffer == v2 && v3 == v4 && v5 == 57 )
-
-break;
-
-LABEL_5:
-
-puts("wrong, try again...");
-
-}
-
-v0 = v3 - 48;
-
-if ( v0 == 5 )
-
-{
-
-puts("get a segment:VjdXJpdHl9");
-
-}
-
-else if ( v0 == 7 )
-
-{
-
-puts("get a segment:ZmxhZ3tpbmZv");
-
-}
-
-else
-
-{
-
-if ( v0 != 4 )
-
-goto LABEL_5;
-
-puts("get a segment:cm1hdGlvbl9fc2");
-
-}
-
-}
-
-}
-
-(```)
 
 Buffer 就是指输入的 s 字符串的首字母，其地址是 sp+1Ch，而后续的字符变
 
