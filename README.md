@@ -25,11 +25,11 @@
                     printf("guess_key:");
                     gets(&Buffer);
                     if ( strlen(&Buffer) <= 0x12 )
-                    break;
+                        break;
                     puts("too long");
                 }
                 if ( Buffer == v2 && v3 == v4 && v5 == 57 )
-                break;
+                    break;
                 LABEL_5:
                 puts("wrong, try again...");
             }
@@ -45,48 +45,39 @@
             else
             {
                 if ( v0 != 4 )
-                goto LABEL_5;
+                    goto LABEL_5;
                 puts("get a segment:cm1hdGlvbl9fc2");
             }
         }
     }
 
-Buffer 就是指输入的 s 字符串的首字母，其地址是 sp+1Ch，而后续的字符变
+Buffer就是指输入的s字符串的首字母，其地址是sp+1Ch，而后续的字符变量v2是sp+1Dh、v3是sp+1Fh、v4是sp+20h、v5是sp+24h。
 
-量 v2 是 sp+1Dh、v3 是 sp+1Fh、v4 是 sp+20h、v5 是 sp+24h。
+由此可知：Buffer是第一个数字字符，v2、v3、v4、v5分别是第二、四、五、九个字符。所以判断的逻辑就是：字符串的长度<=0x12=18、并且number[0]==number[1]、number[3]==number [4]、nmber[8]==57==’9’。
 
-由此可知：Buffer 是第一个数字字符，v2、v3、v4、v5 分别是第二、四、五、
+v0=v3-48，所以v0代表第四个数字。
 
-九 个 字 符 。 所 以 判 断 的 逻 辑 就 是 ： 字 符 串 的 长 度 <=0x12=18 、 并 且
+判断v0的数值：
 
-number[0]==number[1]、number[3]==number [4]、nmber[8]==57==’9’。
+如果是5，输出VjdXJpdHl9；
+如果是7，输出ZmxhZ3tpbmZv；
+如果是4，输出cm1hdGlvbl9fc2；
 
-v0=v3-48，所以 v0 代表第四个数字。
+可知这三个就是key的三个分段，尝试排列组合：
 
-判断 v0 的数值：
+cm1hdGlvbl9fc2  ZmxhZ3tpbmZv  VjdXJpdHl9
 
-如果是 5，输出 VjdXJpdHl9；
+cm1hdGlvbl9fc2  VjdXJpdHl9  ZmxhZ3tpbmZv
 
-如果是 7，输出 ZmxhZ3tpbmZv；
+ZmxhZ3tpbmZv  VjdXJpdHl9  cm1hdGlvbl9fc2
 
-如果是 4，输出 cm1hdGlvbl9fc2；
+ZmxhZ3tpbmZv  cm1hdGlvbl9fc2  VjdXJpdHl9
 
-可知这三个就是 key 的三个分段，尝试排列组合：
+VjdXJpdHl9  ZmxhZ3tpbmZv  cm1hdGlvbl9fc2
 
-cm1hdGlvbl9fc2 ZmxhZ3tpbmZv VjdXJpdHl9
+VjdXJpdHl9  cm1hdGlvbl9fc2  ZmxhZ3tpbmZv
 
-cm1hdGlvbl9fc2 VjdXJpdHl9 ZmxhZ3tpbmZv
-
-ZmxhZ3tpbmZv VjdXJpdHl9 cm1hdGlvbl9fc2
-
-ZmxhZ3tpbmZv cm1hdGlvbl9fc2 VjdXJpdHl9
-
-VjdXJpdHl9 ZmxhZ3tpbmZv cm1hdGlvbl9fc2
-
-VjdXJpdHl9 cm1hdGlvbl9fc2 ZmxhZ3tpbmZv
-
-其中，ZmxhZ3tpbmZvcm1hdGlvbl9fc2VjdXJpdHl9 可以通过 base64 解码得到：
-
+其中，ZmxhZ3tpbmZvcm1hdGlvbl9fc2VjdXJpdHl9可以通过base64解码得到：
 flag{information__security}
 
 夺旗成功。
