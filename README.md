@@ -4,6 +4,8 @@
 
 使用 IDA 打开，F5 反编译：
 
+(```)
+
 void __noreturn sub_401C10()
 
 
@@ -95,7 +97,7 @@ puts("get a segment:cm1hdGlvbl9fc2");
 
 }
 
-
+(```)
 
 Buffer 就是指输入的 s 字符串的首字母，其地址是 sp+1Ch，而后续的字符变
 
