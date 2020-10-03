@@ -6,22 +6,13 @@
 
 
     void __noreturn sub_401C10()
-
-
     {
-
         int v0; // eax@8
-
         char Buffer; // [sp+1Ch] [bp-108h]@2
-
         char v2; // [sp+1Dh] [bp-107h]@3
-
         char v3; // [sp+1Fh] [bp-105h]@4
-
         char v4; // [sp+20h] [bp-104h]@4
-
         char v5; // [sp+24h] [bp-100h]@7
-
 
 
         sub_4018F0();
